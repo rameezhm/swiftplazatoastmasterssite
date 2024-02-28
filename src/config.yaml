@@ -1,7 +1,7 @@
 site:
   name: Swift Plaza Toastmasters
-  site: 'https://rameezhm.github.io'
-  base: '/swiftplazatoastmasterssite'
+  site: 'https://swiftplazatoastmasterssite.pages.dev'
+  base: '/'
   trailingSlash: false
 
   googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
