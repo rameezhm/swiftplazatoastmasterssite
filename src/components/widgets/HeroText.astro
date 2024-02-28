@@ -4,7 +4,7 @@ import Button from '~/components/ui/Button.astro';
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
-  tagline,
+  tagline = await Astro.slots.render('tagline'),
   content = await Astro.slots.render('content'),
   callToAction = await Astro.slots.render('callToAction'),
   callToAction2 = await Astro.slots.render('callToAction2'),
