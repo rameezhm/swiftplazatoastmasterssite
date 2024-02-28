@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://swiftplazatm.org/sitemap-index.xml

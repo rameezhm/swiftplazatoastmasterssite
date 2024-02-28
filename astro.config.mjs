@@ -25,8 +25,8 @@ const whenExternalScripts = (items = []) =>
     : [];
 
 export default defineConfig({
-  site: SITE.site,
-  base: SITE.base,
+  site: 'https://rameezhm.github.io',
+  base: '/swiftplazatoastmasterssite',
   trailingSlash: SITE.trailingSlash ? 'always' : 'never',
 
   output: 'static',
