@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 const metadata = {
   title: 'Swift Plaza Toastmasters',
@@ -34,22 +35,11 @@ const metadata = {
 
   </Hero>
 
-  <!-- Current Event Hero -->
-  <Hero
-    actions={[
-      {
-        variant: 'secondary',
-        text: 'Text To Learn More About Our Open House',
-        href: 'sms:925-526-5229',
-        target: '_blank',
-        icon: 'tabler:message',
-      },
-    ]}
-    image={{ src: '~/assets/images/open_house_cropped.png', alt: 'Open House Event Banner' }}
-  > 
-
-
-  </Hero>
+  <!-- Blog Section -->
+  <BlogLatestPosts
+    title="Our Blog"
+    information={`Keep up to date with our latest accomplishments and events!`}
+  />
 
   <!-- Content Widget **************** -->
 

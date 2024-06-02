@@ -56,7 +56,7 @@ export const footerData = {
         { text: 'Home', href: '/' },
         { text: 'Attend Meeting', href: 'https://us02web.zoom.us/j/8179484915?pwd=WHNaUXdXK1l4YnZ2UVljTUNMaDE5QT09' },
         { text: 'Contact Us', href: '/contact' },
-        { text: 'Blog', href: '#' },
+        { text: 'Blog', href: '/blog' },
       ],
     },
   ],
