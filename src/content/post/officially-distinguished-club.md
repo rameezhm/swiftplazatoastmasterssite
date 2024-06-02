@@ -2,7 +2,7 @@
 publishDate: 2024-05-19T20:30:00Z
 title: We're  Officially a Distinguished Club!
 excerpt: We are proud to announce that Swift Plaza Toastmasters is now an officially Distinguished Club! 
-image: https://mcusercontent.com/7b0f9a3fbcf9d695cb7f2fc02/images/2f931fa3-2fa6-2fe5-676d-d7d26b10b422.png
+image: ~/assets/images/dsplaceholder.png
 category: Blog
 tags:
   - accomplishments
