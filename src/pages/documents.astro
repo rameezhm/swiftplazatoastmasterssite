@@ -1,0 +1,86 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+    title: 'Useful Documents',
+  };
+---
+
+<Layout metadata={metadata}>
+    <!-- Features2 Widget ************** -->
+
+    <Features2
+    title="Downloads"
+    subtitle="Easy Download Links for Frequently Used Documents"
+    tagline="Documents"
+    items={[
+    {
+        title: 'Ah Counter',
+        description: "The Ah Counter script and log. Use this to keep track of the ah's and um's during your meetings.",
+        callToAction: {
+          target: '_blank',
+          text: 'Download',
+          href: 'https://f000.backblazeb2.com/file/swiftplazatm/toastmasters-675A-ah-counter-script-and-log-letter-size.pdf',
+        },
+        icon: 'flat-color-icons:voice-presentation',
+    },
+    {
+        title: 'General Evaluator',
+        description: "The General Evaluator's checklist. Use this to take note that everything in the meeting is going as planned.",
+        callToAction: {
+          target: '_blank',
+          text: 'Download',
+          href: 'https://f000.backblazeb2.com/file/swiftplazatm/toastmasters-675B-general-evaluator-checklist-letter-size.pdf',
+        },
+        icon: 'flat-color-icons:checkmark',
+    },
+    {
+        title: 'Grammarian',
+        description: "The Grammarian's script and log. Use this to keep track of proper and improper uses of language/grammar during your meeting.",
+        callToAction: {
+          target: '_blank',
+          text: 'Download',
+          href: 'https://f000.backblazeb2.com/file/swiftplazatm/toastmasters-675C-grammarian-script-and-log-letter-size.pdf',
+        },
+        icon: 'flat-color-icons:document',
+    },
+    {
+        title: 'Timer',
+        description: "The Timer's script and log. Use this to keep track of the time of each speech/section in the meeting.",
+        callToAction: {
+          target: '_blank',
+          text: 'Download',
+          href: 'https://f000.backblazeb2.com/file/swiftplazatm/toastmasters-675E-timer-script-and-log-letter-size.pdf',
+        },
+        icon: 'flat-color-icons:alarm-clock',
+    },
+    {
+        title: 'Topicsmaster',
+        description: "The Topicsmaster's script and log. Use this if you're managing the table topics for the meeting.",
+        callToAction: {
+          target: '_blank',
+          text: 'Download',
+          href: 'https://f000.backblazeb2.com/file/swiftplazatm/toastmasters-675F-topicsmaster-script-and-log-letter-size.pdf',
+        },
+        icon: 'flat-color-icons:reading',
+    },
+    {
+        title: 'Toastmaster',
+        description: "Toastmaster of the Day's script and checklist. Use this to make sure you have everything ready for your time as Toastmaster of the day.",
+        callToAction: {
+          target: '_blank',
+          text: 'Download',
+          href: 'https://f000.backblazeb2.com/file/swiftplazatm/toastmasters-675G-toastmaster-script-and-checklist-letter-size.pdf',
+        },
+        icon: 'flat-color-icons:podium-with-speaker',
+    },
+    ]}
+    >
+
+    <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+
+    </Features2>
+</Layout>
