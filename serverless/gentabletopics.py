@@ -37,7 +37,7 @@ def chatgpt_proxy(request):
         # Call the OpenAI ChatGPT API
         openai.api_key = os.getenv('OPENAI_API_KEY')
         completion = openai.beta.chat.completions.parse(
-            model="gpt-4o-2024-08-06",  # You can change this to the desired model
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "Generate a list of 5 table topics for a Toastmasters meeting given a theme or prompt below."},
                 {"role": "user", "content": prompt}

@@ -77,6 +77,9 @@ const TableTopicsGenerator = () => {
                 &#8594;
               </button>
             </div>
+            <div className="flex justify-center p-6">
+              <p className="text-sm text-gray-500 dark:text-slate-900">{`Topic ${currentIndex + 1} of ${topics.length}`}</p>
+            </div>
           </div>
           <div className="flex space-x-4">
             <button
