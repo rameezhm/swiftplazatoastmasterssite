@@ -11,6 +11,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# python serverless function venv
+serverless/.venv/ 
 
 # environment variables
 .env

@@ -1,0 +1,13 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import TableTopicsGenerator from '../components/widgets/TableTopicsGenerator';
+
+const metadata = {
+  title: 'Table Topics Generator',
+};
+---
+
+<Layout metadata={metadata}>
+    <h1 class="text-4xl font-bold text-center light:text-gray-800 mb-8">Table Topics Generator</h1>
+    <TableTopicsGenerator client:load />
+</Layout>
