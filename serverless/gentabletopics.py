@@ -35,7 +35,6 @@ def chatgpt_proxy(request):
 
     try:
         # Call the OpenAI ChatGPT API
-        openai.api_key = os.getenv('OPENAI_API_KEY')
         completion = openai.beta.chat.completions.parse(
             model="gpt-4o-mini",
             messages=[
