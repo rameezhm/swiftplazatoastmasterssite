@@ -67,12 +67,12 @@ const TableTopicsGenerator = () => {
           />
           <div className="flex items-center space-x-2">
             <label htmlFor="numTopics" className="text-md">
-              # of topics:
+              # Of Topics:
             </label>
             <button
               onClick={() => handleNumTopicsChange(-1)}
               disabled={numTopics <= MIN_TOPICS}
-              className="px-2 py-1 bg-gray-200 rounded-md disabled:opacity-50"
+              className="px-2 py-1 dark:text-white dark:bg-slate-900 bg-gray-200 rounded-md disabled:opacity-50"
             >
               -
             </button>
@@ -83,12 +83,12 @@ const TableTopicsGenerator = () => {
               onChange={handleInputChange}
               min={MIN_TOPICS}
               max={MAX_TOPICS}
-              className="p-2 w-16 text-center rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 no-spinner"
+              className="p-1 w-16 text-center rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 no-spinner"
             />
             <button
               onClick={() => handleNumTopicsChange(1)}
               disabled={numTopics >= MAX_TOPICS}
-              className="px-2 py-1 bg-gray-200 rounded-md disabled:opacity-50"
+              className="px-2 py-1 dark:text-white dark:bg-slate-900 bg-gray-200 rounded-md disabled:opacity-50"
             >
               +
             </button>
