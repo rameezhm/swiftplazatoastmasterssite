@@ -29,6 +29,13 @@ def chatgpt_proxy(request):
     # Get the prompt from the request body
     request_json = request.get_json(silent=True)
     prompt = request_json.get('theme')
+    try:
+        topic_count = request_json.get('numTopics')
+    except:
+        topic_count = 5
+
+    if topic_count > 20 or topic_count < 1:
+        return ('Please keep number of topics in the range of 1-20', 403, headers)
 
     if not prompt:
         return ('No prompt provided', 400, headers)
@@ -38,7 +45,7 @@ def chatgpt_proxy(request):
         completion = openai.beta.chat.completions.parse(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "Generate a list of 5 table topics for a Toastmasters meeting given a theme or prompt below."},
+                {"role": "system", "content": f"Generate a list of {topic_count} table topics for a Toastmasters meeting given a theme or prompt below."},
                 {"role": "user", "content": prompt}
             ],
             response_format=TableTopics

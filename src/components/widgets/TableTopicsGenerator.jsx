@@ -3,9 +3,13 @@ import React, { useState } from 'react';
 
 const TableTopicsGenerator = () => {
   const [theme, setTheme] = useState('');
+  const [numTopics, setNumTopics] = useState(5);
   const [topics, setTopics] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isGenerating, setIsGenerating] = useState(false);
+
+  const MIN_TOPICS = 1;
+  const MAX_TOPICS = 20;
 
   const generateTopics = async () => {
     setIsGenerating(true);
@@ -15,7 +19,7 @@ const TableTopicsGenerator = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ theme }),
+        body: JSON.stringify({ theme, numTopics }),
       });
       const data = await response.json();
       setTopics(data.response);
@@ -36,8 +40,18 @@ const TableTopicsGenerator = () => {
 
   const handleReset = () => {
     setTheme('');
+    setNumTopics(5);
     setTopics([]);
     setCurrentIndex(0);
+  };
+
+  const handleNumTopicsChange = (change) => {
+    setNumTopics((prev) => Math.min(MAX_TOPICS, Math.max(MIN_TOPICS, prev + change)));
+  };
+
+  const handleInputChange = (e) => {
+    const value = parseInt(e.target.value) || MIN_TOPICS;
+    setNumTopics(Math.min(MAX_TOPICS, Math.max(MIN_TOPICS, value)));
   };
 
   return (
@@ -51,6 +65,34 @@ const TableTopicsGenerator = () => {
             placeholder="Enter a theme"
             className="block p-3 w-full text-md rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
           />
+          <div className="flex items-center space-x-2">
+            <label htmlFor="numTopics" className="text-md">
+              # of topics:
+            </label>
+            <button
+              onClick={() => handleNumTopicsChange(-1)}
+              disabled={numTopics <= MIN_TOPICS}
+              className="px-2 py-1 bg-gray-200 rounded-md disabled:opacity-50"
+            >
+              -
+            </button>
+            <input
+              id="numTopics"
+              type="number"
+              value={numTopics}
+              onChange={handleInputChange}
+              min={MIN_TOPICS}
+              max={MAX_TOPICS}
+              className="p-2 w-16 text-center rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 no-spinner"
+            />
+            <button
+              onClick={() => handleNumTopicsChange(1)}
+              disabled={numTopics >= MAX_TOPICS}
+              className="px-2 py-1 bg-gray-200 rounded-md disabled:opacity-50"
+            >
+              +
+            </button>
+          </div>
           <button
             onClick={generateTopics}
             disabled={isGenerating}
@@ -97,6 +139,16 @@ const TableTopicsGenerator = () => {
           </div>
         </div>
       )}
+      <style jsx>{`
+        .no-spinner::-webkit-inner-spin-button,
+        .no-spinner::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        .no-spinner {
+          -moz-appearance: textfield;
+        }
+      `}</style>
     </div>
   );
 };
