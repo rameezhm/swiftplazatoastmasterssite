@@ -7,9 +7,23 @@ const TableTopicsGenerator = () => {
   const [topics, setTopics] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isCardView, setIsCardView] = useState(true);
 
   const MIN_TOPICS = 1;
   const MAX_TOPICS = 20;
+
+  const toggleView = () => {
+    setIsCardView(!isCardView);
+  };
+
+  const DisplayToggle = () => (
+    <button
+      onClick={toggleView}
+      className="mb-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300"
+    >
+      {isCardView ? 'Switch to List View' : 'Switch to Card View'}
+    </button>
+  );
 
   const generateTopics = async () => {
     setIsGenerating(true);
@@ -53,6 +67,8 @@ const TableTopicsGenerator = () => {
     const value = parseInt(e.target.value) || MIN_TOPICS;
     setNumTopics(Math.min(MAX_TOPICS, Math.max(MIN_TOPICS, value)));
   };
+
+  const topicsText = topics.map((topic, index) => `${index + 1}. ${topic}`).join('\n');
 
   return (
     <div className="max-w-2xl mx-auto p-6">
@@ -103,26 +119,48 @@ const TableTopicsGenerator = () => {
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-            <div className="flex items-center justify-between p-6">
-              <button
-                onClick={handlePrevious}
-                className="text-3xl text-blue-500 hover:text-blue-600 transition duration-300"
-              >
-                &#8592;
-              </button>
-              <p className="text-xl text-center flex-1 px-4 dark:text-slate-900">{topics[currentIndex]}</p>
-              <button
-                onClick={handleNext}
-                className="text-3xl text-blue-500 hover:text-blue-600 transition duration-300"
-              >
-                &#8594;
-              </button>
+          <DisplayToggle />
+          {isCardView ? (
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+              <div className="flex items-center justify-between p-6">
+                <button
+                  onClick={handlePrevious}
+                  className="text-3xl text-blue-500 hover:text-blue-600 transition duration-300"
+                >
+                  &#8592;
+                </button>
+                <p className="text-xl text-center flex-1 px-4 dark:text-slate-900">{topics[currentIndex]}</p>
+                <button
+                  onClick={handleNext}
+                  className="text-3xl text-blue-500 hover:text-blue-600 transition duration-300"
+                >
+                  &#8594;
+                </button>
+              </div>
+              <div className="flex justify-center p-6">
+                <p className="text-sm text-gray-500 dark:text-slate-900">{`Topic ${currentIndex + 1} of ${topics.length}`}</p>
+              </div>
             </div>
-            <div className="flex justify-center p-6">
-              <p className="text-sm text-gray-500 dark:text-slate-900">{`Topic ${currentIndex + 1} of ${topics.length}`}</p>
+          ) : (
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+              <textarea
+                readOnly
+                value={topicsText}
+                className="w-full h-64 p-4 text-md dark:text-slate-900 dark:bg-white resize-none focus:outline-none"
+              />
+              <div className="flex justify-between items-center p-4 bg-gray-100 dark:bg-gray-800">
+                <p className="text-sm text-gray-500 dark:text-gray-300">
+                  {`${topics.length} topics generated`}
+                </p>
+                <button
+                  onClick={() => navigator.clipboard.writeText(topicsText)}
+                  className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"
+                >
+                  Copy
+                </button>
+              </div>
             </div>
-          </div>
+          )}
           <div className="flex space-x-4">
             <button
               onClick={generateTopics}
